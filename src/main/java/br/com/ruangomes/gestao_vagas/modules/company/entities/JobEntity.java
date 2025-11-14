@@ -13,6 +13,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Entity(name = "job")
@@ -24,14 +26,16 @@ public class JobEntity {
     private UUID id;
     private String description;
     private String benefits;
+
+    @NotBlank(message = "O campo nível é obrigatório")
     private String level;
 
     @ManyToOne
     @JoinColumn(name = "company_id", insertable = false, updatable = false)
     private CompanyEntity companyEntity;
 
-    
-    @Column(name = "company_id")
+    @NotNull(message = "O campo companyId é obrigatório")
+    @Column(name = "company_id", nullable = false)
     private UUID companyId;
 
     @CreationTimestamp
