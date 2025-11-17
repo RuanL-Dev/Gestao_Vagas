@@ -34,7 +34,7 @@ public class JobEntity {
     @JoinColumn(name = "company_id", insertable = false, updatable = false)
     private CompanyEntity companyEntity;
 
-    @NotNull(message = "O campo companyId é obrigatório")
+    
     @Column(name = "company_id", nullable = false)
     private UUID companyId;
 
