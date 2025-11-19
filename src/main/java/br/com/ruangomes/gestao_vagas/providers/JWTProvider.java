@@ -23,7 +23,6 @@ public class JWTProvider {
                     .build()
                     .verify(token)
                     .getSubject();
-            System.out.println(subject);
             return subject;
 
         } catch (JWTVerificationException ex) {

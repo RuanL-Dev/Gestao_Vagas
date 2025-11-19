@@ -1,5 +1,6 @@
 package br.com.ruangomes.gestao_vagas.modules.company.useCases;
 
+import java.net.Socket;
 import java.time.Duration;
 import java.time.Instant;
 
