@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,15 +20,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/job")
+@RequestMapping("/company/job")
 public class JobController {
 
     @Autowired
     private CreateJobUseCase createJobUseCase;
 
     @PostMapping("/")
-    
-    
+    @PreAuthorize("hasRole('COMPANY')")
     public JobEntity create (@Valid @RequestBody CreatJobDTO creatJobDTO, HttpServletRequest request) {
         var companyId = request.getAttribute("company_id").toString();
 
