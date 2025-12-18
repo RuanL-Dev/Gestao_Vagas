@@ -1,21 +1,17 @@
 package br.com.ruangomes.gestao_vagas.modules.company.useCases;
 
-import java.net.Socket;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
 
 import javax.security.sasl.AuthenticationException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-
 import br.com.ruangomes.gestao_vagas.modules.company.dto.AuthCompanyDTO;
 import br.com.ruangomes.gestao_vagas.modules.company.dto.AuthCompanyResponseDTO;
 import br.com.ruangomes.gestao_vagas.modules.company.repositories.CompanyRepository;
