@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreatJobDTO {
+public class CreateJobDTO {
 
     @Schema(example = "Vaga para Desenvolvedor Junior", requiredMode = RequiredMode.REQUIRED)
     private String description;
