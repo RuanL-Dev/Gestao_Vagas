@@ -2,6 +2,7 @@ package br.com.ruangomes.gestao_vagas.modules.company.controllers;
 
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,16 +38,23 @@ public class JobController {
                         })
         })
         @SecurityRequirement(name = "jwt_auth")
-        public JobEntity create(@Valid @RequestBody CreateJobDTO createJobDTO, HttpServletRequest request) {
+        public ResponseEntity<Object> create(@Valid @RequestBody CreateJobDTO createJobDTO,
+                        HttpServletRequest request) {
                 var companyId = request.getAttribute("company_id").toString();
 
-                var jobEntity = JobEntity.builder()
-                                .description(createJobDTO.getDescription())
-                                .benefits(createJobDTO.getBenefits())
-                                .level(createJobDTO.getLevel())
-                                .companyId(UUID.fromString(companyId))
-                                .build();
-                return this.createJobUseCase.execute(jobEntity);
+                try {
+                        var jobEntity = JobEntity.builder()
+                                        .description(createJobDTO.getDescription())
+                                        .benefits(createJobDTO.getBenefits())
+                                        .level(createJobDTO.getLevel())
+                                        .companyId(UUID.fromString(companyId))
+                                        .build();
+                        var result = this.createJobUseCase.execute(jobEntity);
+                        return ResponseEntity.ok().body(result);
+
+                } catch (Exception e) {
+                        return ResponseEntity.badRequest().body(e.getMessage());
+                }
 
         }
 }
