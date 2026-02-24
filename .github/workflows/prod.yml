@@ -23,3 +23,13 @@ jobs:
               run: docker build -t ruanlgomes/gestao_vagas .
             - name: Publish image
               run: docker push ruanlgomes/gestao_vagas
+    deploy:
+        needs: build
+        runs-on: self-hosted
+        steps:
+            - name: Pull image docker
+              run: docker pull ruanlgomes/gestao_vagas:latest
+            - name: remove old container
+              run: docker rm -f gestao-vagas
+            - name: Run docker container
+              run: docker run -d -p 8080:8080 -e DATABASE_URL=${{secrets.DATABASE_URL}} -e DATABASE_PASSWORD=${{secrets.DATABASE_PASSWORD}} -e DATABASE_USERNAME=${{secrets.DATABASE_USERNAME}} --name gestao-vagas ruanlgomes/gestao_vagas
