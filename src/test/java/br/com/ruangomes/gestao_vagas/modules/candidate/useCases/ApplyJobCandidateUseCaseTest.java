@@ -36,7 +36,7 @@ public class ApplyJobCandidateUseCaseTest {
     private ApplyJobRepository applyJobRepository;
 
     @Test
-    @DisplayName("Should be able to apply for a job with candidate not found")
+    @DisplayName("Should not be able to apply for a job with candidate not found")
     public void should_not_be_able_to_apply_for_a_job_with_candidate_not_found() {
         try {
             applyJobCandidateUseCase.execute(null, null);

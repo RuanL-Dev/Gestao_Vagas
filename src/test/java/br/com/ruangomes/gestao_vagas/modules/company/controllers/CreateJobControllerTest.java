@@ -26,6 +26,7 @@ import br.com.ruangomes.gestao_vagas.utils.TestUtils;
 @ActiveProfiles("test")
 public class CreateJobControllerTest {
 
+        @Autowired
         private MockMvc mvc;
 
         @Autowired
