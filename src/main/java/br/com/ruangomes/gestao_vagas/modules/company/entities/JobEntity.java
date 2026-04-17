@@ -6,7 +6,6 @@ import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,7 +25,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JobEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -43,11 +42,10 @@ public class JobEntity {
     @JoinColumn(name = "company_id", insertable = false, updatable = false)
     private CompanyEntity companyEntity;
 
-    
     @Column(name = "company_id", nullable = false)
     private UUID companyId;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
-    
+
 }

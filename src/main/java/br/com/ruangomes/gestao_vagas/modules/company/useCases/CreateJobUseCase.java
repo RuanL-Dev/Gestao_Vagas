@@ -18,7 +18,7 @@ public class CreateJobUseCase {
     CompanyRepository companyRepository;
 
     public JobEntity execute(JobEntity jobEntity) {
-        companyRepository.findById(jobEntity.getId()).orElseThrow(() -> {
+        companyRepository.findById(jobEntity.getCompanyId()).orElseThrow(() -> {
             throw new CompanyNotFoundException();
         });
         return this.jobRepository.save(jobEntity);
