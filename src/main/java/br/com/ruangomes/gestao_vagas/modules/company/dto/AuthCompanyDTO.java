@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor //Encapsula a criação do construtor com todos os atributos
+@AllArgsConstructor // Encapsula a criação do construtor com todos os atributos
 public class AuthCompanyDTO {
-    
-    private String password;
+
     private String username;
+    private String password;
 }
